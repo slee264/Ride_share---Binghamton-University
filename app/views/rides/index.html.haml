@@ -1,0 +1,21 @@
+-#  This file is app/views/rides/index.html.haml
+
+.center.jumbotron
+    %h1 RideShare
+    %br
+    = form_tag search_rides_path, :method => :GET do
+        = label :search, :departure, 'Departure Location'
+        = select :search, :departure, @all_NY_counties
+    
+        = label :search, :destination, 'Destination Location'
+        = select :search, :destination, @all_NY_counties
+    
+        = label :search, :date, 'On'
+        = date_select :search, :date
+    
+        = submit_tag 'Search'
+        %br
+        %br
+        %br
+        = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
+        = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"

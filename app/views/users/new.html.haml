@@ -1,0 +1,20 @@
+%h1 Sign up
+
+= form_tag users_path, :method => :POST do
+  = label :user, :first_name, 'First Name'
+  = text_field :user, :first_name
+  %br
+  = label :user, :last_name, 'Last Name'
+  = text_field :user, :last_name
+  %br
+  = label :user, :email, 'E-Mail Address'
+  = text_field :user, :email
+  %br
+  = label :user, :password, 'Password'
+  %input{:name => "password", :type => "password"}/
+  %br
+  = label :user, :password_confirmation, 'Confirm Password'
+  %input{:name => "password", :type => "password"}/
+
+  %br
+  = submit_tag "Register"

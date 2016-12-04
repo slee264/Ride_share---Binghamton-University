@@ -1,0 +1,16 @@
+%h1 Post A Ride
+
+= form_tag rides_path, :method => :POST do
+    = label :ride, :departure, 'Departure Location'
+    = select :ride, :departure, @all_NY_counties
+    
+    = label :ride, :destination, 'Destination Location'
+    = select :ride, :destination, @all_NY_counties
+    
+    = label :ride, :dateAndTime, 'On: '
+    = date_select :ride, :dateAndTime
+    
+    = label :ride, :dateAndTime, 'At: '
+    = time_select :ride, :dateAndTime
+    
+    = submit_tag 'Post'

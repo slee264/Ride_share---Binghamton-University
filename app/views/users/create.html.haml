@@ -1,0 +1,14 @@
+-# This file is app/views/rides/registration_results.html.haml
+
+-# The page you go to after you register. It will allert you to after
+-# success or a failure.
+
+-# TODO: Make the title of this page "BU Ride Share - Registration" (once I figure out how to do that)
+
+
+%h1= @success ? "You have successfully registered!!!" : "There was an error in your registration."
+%br
+%h2 = @message
+%br
+= link_to 'Home Page', rides_path
+= link_to 'Try Again', new_user_path if not @success
