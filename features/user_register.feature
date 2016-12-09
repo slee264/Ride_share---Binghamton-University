@@ -28,7 +28,6 @@ Scenario: Successfully sign up for an account.
  	And I should see "The password fields don't match."
  	Then I follow "Try Again"
  	Then I am on the new_user page
- 	
 
 Scenario: Fail due to an invalid email.
 	When I follow "Sign up"
