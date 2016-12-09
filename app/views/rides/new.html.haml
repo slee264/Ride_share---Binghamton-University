@@ -2,15 +2,15 @@
 
 = form_tag rides_path, :method => :POST do
     = label :ride, :departure, 'Departure Location'
-    = select :ride, :departure, @all_NY_counties
-    
+    = select :ride, :departure_location, @all_NY_counties
+
     = label :ride, :destination, 'Destination Location'
-    = select :ride, :destination, @all_NY_counties
+    = select :ride, :destination_location, @all_NY_counties
     
-    = label :ride, :dateAndTime, 'On: '
-    = date_select :ride, :dateAndTime
+    %br
+    %br
     
-    = label :ride, :dateAndTime, 'At: '
-    = time_select :ride, :dateAndTime
+    = label :ride, :dateAndTime, 'Time '
+    = datetime_select :ride, :dateAndTime, {:start_year => Date.today.year, :end_year => Date.today.year + 1, :prompt => true}
     
     = submit_tag 'Post'

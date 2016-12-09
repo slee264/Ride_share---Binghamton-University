@@ -28,6 +28,11 @@ Scenario: redirect to rides page when destination is searched
 	And I select "2016" from "search_date_1i"
 	And I select "October" from "search_date_2i"
 	And I select "29" from "search_date_3i"
-	Then I am on the search_rides page
+	And I press "Search"
+	#Then I should see "2016"
+	#And I should see "October"
+#	And I should see" 29
+	And I should see "Allegany County"
+	And I should see "Columbia County"
 	#need to implement 
 #	And I should only see the following counties: Kings County, Chautauqua County

@@ -1,6 +1,7 @@
 -#  This file is app/views/rides/index.html.haml
 
 .center.jumbotron
+
     %h1 RideShare
     %br
     = form_tag search_rides_path, :method => :GET do
@@ -17,5 +18,21 @@
         %br
         %br
         %br
+          
         = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
         = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"
+
+-#    -if @rides.present?
+    %tables#rides
+        %thead
+            %tr
+                %th Departure Location
+                %th Destination Location
+                %th Date and Time
+        %tbody
+            - @rides.each do |ride|
+                %tr
+                    %td=ride.departure_location
+                    %td=ride.destination_location
+                    %td=ride.dateAndTime
+            

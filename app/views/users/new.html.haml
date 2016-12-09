@@ -1,7 +1,7 @@
 %h1 Sign up
 
-= form_tag users_path, :method => :POST do
-  = label :user, :first_name, 'First Name'
+= form_tag users_path, :autocomplete => :off, :method => :POST do
+  = label :first_name, 'First Name'
   = text_field :user, :first_name
   %br
   = label :user, :last_name, 'Last Name'
@@ -11,10 +11,12 @@
   = text_field :user, :email
   %br
   = label :user, :password, 'Password'
-  %input{:name => "password", :type => "password"}/
+  = password_field :user, :password
+  -# %input{:name => "password", :type => "password"}/
   %br
-  = label :user, :password_confirmation, 'Confirm Password'
-  %input{:name => "password", :type => "password"}/
+  = label :post, :password_confirmation, 'Confirm Password'
+  = password_field :post, :password_confirmation
+  -# %input{:name => "password", :type => "password"}/
 
   %br
   = submit_tag "Register"

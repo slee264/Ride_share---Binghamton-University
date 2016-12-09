@@ -14,45 +14,68 @@ class UsersController < ApplicationController
    def index
    
    end
-
-   def new
-      @user = User.new
-   end
    
    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
+      # Do not add password_confirmation here inside the permit. This grants authority to use those values to create a user.
+   end
+
+   def new
    end
    
    def create
+
       @success = true
-      if(params[:password] != params[:password_confirmation])
-         @success = false
-         @message = @@PASSWORD_DIFFERENT_MESSAGE
+      @notExist = true   
+      params[:user].each do |key, value|
+         if !value.present?
+            @message = "One or more fields is empty."
+            @success = false
+            return
+         end
       end
-      if !(params[:firstName].present? || params[:lastName].present? || params[:email].present? || params[:password].present? || params[:password_confirmation].present?)
-         @success = false
-         @message = "One or more of the fields is blank."
-      end
-=begin
-      if not .end_with? '@binghamton.edu'
-         @success = false
-         @message = "Must use Binghamton e-mail address."
-      end
-=end
-      if(params[:password].length < 6 || params[:firstName].length > 20 || params[:lastName].length > 20)
-         @success = false
-         @message = "The length of one of the fields is too short."
-      end
-      User.create!(user_params)
       
+      if not params[:user][:email].end_with? '@binghamton.edu'
+           @success = false
+           @message = "Must use Binghamton e-mail address."
+           return
+      end
+      
+      if (params[:user][:password] != params[:post][:password_confirmation])
+         @message = "The password fields don't match."
+         @success = false
+      end
+      
+      if (params[:user][:password].length < 7)
+         @message = "The password must be 7 characters or more."
+         @success = false
+      end
+      
+      if(User.exists?(:password => params[:user][:password]) == true)
+         @message = "User already exists with this password."
+         @success = false
+         @notExist = false
+      end
+      if(User.exists?(:email => params[:user][:email]) == true)
+         @message = "User already exists with this email."
+         @success = false
+         @notExist = false
+      end
+      if(User.exists?(:first_name => params[:user][:first_name]) == true && User.exists?(:last_name => params[:user][:last_name]) == true)   
+         @message = "User already exists with this name."
+         @success = false
+         @notExist = false
+      end
+      
+      User.create!(user_params) if @success == true && @notExist == true
+      # flash[:success] = "Welcome to Bu RideShare!!!"
+      # redirect_to root_path
    end
-   
    def destroy
       # #destroy one user
-      # User.destroy
+      User.destroy
       # #destroy multiple users
-      # User.where(:id => #id).destroy_all
-   
+      User.where(:id => params[:ids]).destroy_all
    end
    
    def edit

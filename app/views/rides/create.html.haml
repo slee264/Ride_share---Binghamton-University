@@ -1,4 +1,16 @@
-%h1= @newRide.departure_location
-%h2 = @newRide.destination_location
-%h3 = @newRide.dateAndTime
-= link_to "Post another ride.", root_path
+-# %h3= @newRide
+%br
+%br
+
+-if @valid
+    %h2= "Departure Location: " + @departure
+    %h2= "Destination Location: " + @destination
+    %h2= "Year: " + @year
+    %h2= "Month: " + @month
+    %h2= "Date: " + @date
+    %h2= "Hour: " + @hour
+    %h2= "Minute: " + @minute
+- else
+    Yo
+    %h2= @message
+= link_to "Post another ride.", new_ride_path
