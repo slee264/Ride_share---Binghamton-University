@@ -65,7 +65,3 @@ Scenario: Fail due to an invalid email.
  	Then I should see "The password must be 7 characters or more."
  	Then I follow "Try Again"
  	Then I am on the new_user page
-   
-   
-   
-   
