@@ -28,7 +28,6 @@ Scenario: Successfully sign up for an account.
  	And I should see "The password fields don't match."
  	Then I follow "Try Again"
  	Then I am on the new_user page
- 	//fuck it
 
 Scenario: Fail due to an invalid email.
 	When I follow "Sign up"
@@ -65,6 +64,7 @@ Scenario: Fail due to an invalid email.
  	Then I should see "The password must be 7 characters or more."
  	Then I follow "Try Again"
  	Then I am on the new_user page
+ 	// fuck you
    
    
    
