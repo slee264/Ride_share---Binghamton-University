@@ -44,17 +44,7 @@ class RidesController < ApplicationController
   end
   
   def search
-    #@ride = params[:search]
-    #@rides = Ride.searchRides @ride
-    @rides = Ride.searchRides(params[:search])
-    @rides.each do |ride|
-      @search_departure = ride["departure"]
-      @search_destination = ride["destination"]
-      @search_year = ride["date(1i)"]
-      @search_month = ride["date(2i)"]
-      @search_date = ride["date(3i)"]
-      @ride.inspect
-    end
-    #search[departure]=Albany+County&search[destination]=Albany+County&search[date(1i)]=2016&search[date(2i)]=12&search[date(3i)]
-  end
+    @ride = params[:search]
+    @rides = Ride.searchRides @ride
+  end  
 end

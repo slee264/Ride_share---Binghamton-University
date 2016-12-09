@@ -1,19 +1,5 @@
--#    -if @rides.present?
--#    %tables#rides
--#        %thead
--#            %tr
--#                %th Departure Location
--#                %th Destination Location
--#                %th Date and Time
--#        %tbody
--#            - @rides.each do |ride|
--#                %tr
--#                   %td=ride.departure_location
- -#                   %td=ride.destination_location
- -#                   %td=ride.dateAndTime
-%h2= "Departure Location: " + @search_departure
-%h2= "Destination Location: " + @search_destination
-%h2= "Year: " + @search_year
-%h2= "Month: " + @search_month
-%h2= "Date: " + @search_date
-%h2= @ride.inspect            
+-#%h2= "Departure Location: " + @search_departure
+-#%h2= "Destination Location: " + @search_destination
+%h2= "Year: " + @search_year.inspect
+-@rides.each do |ride|
+    %h2= ride[:destination_location]
