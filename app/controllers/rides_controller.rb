@@ -9,7 +9,7 @@ class RidesController < ApplicationController
   
   def ride_params
     params.require(:ride).permit(:departure_location, :destination_location, :dateAndTime)
-   end
+  end
 
   def create
     @newRide = params[:ride]
@@ -26,7 +26,7 @@ class RidesController < ApplicationController
       @month = Date::MONTHNAMES[(@newRide["dateAndTime(2i)"]).to_i]
       @date = @newRide["dateAndTime(3i)"]
       @hour = @newRide["dateAndTime(4i)"]
-      @minute = @newRide["dateAndTime(5i)"] 
+      @minute = @newRide["dateAndTime(5i)"]
       @newRide.inspect
     else
       @message = 'You need to select all the fields.'
