@@ -35,5 +35,6 @@ Scenario: redirect to rides page when destination is searched
 	And I should see "Allegany County"
 	And I should see "Columbia County"
 	And I should see "Brooklyn County"
+	And I should see "Broome County"
 	#need to implement 
 #	And I should only see the following counties: Kings County, Chautauqua County
