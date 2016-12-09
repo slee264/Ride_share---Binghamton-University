@@ -27,4 +27,15 @@ Scenario: Post the ride by selecting from the dropdown boxes
    And I should see "20"
    And I should see "58"
    
+Scenario: User doesn't select fields from drop down boxes
+   When I follow "Post a Ride"
+   Then I select "Allegany County" from "ride_departure_location"
+   When I select "Bronx County" from "ride_destination_location"
+   When I select "Year" from "ride_dateAndTime_1i"
+   When I select "Month" from "ride_dateAndTime_2i"
+   When I select "Day" from "ride_dateAndTime_3i"
+   When I select "Hour" from "ride_dateAndTime_4i"
+   When I select "Minute" from "ride_dateAndTime_5i"
+   And I press "Post"
+   And I should see "You need to select all the fields."
    
