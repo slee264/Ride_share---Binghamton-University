@@ -96,6 +96,7 @@ GEM
       email_regex
     email_regex (0.0.1)
     erubis (2.7.0)
+    eventmachine (1.2.1)
     execjs (2.7.0)
     ffi (1.9.14)
     formatador (0.2.5)
@@ -148,6 +149,8 @@ GEM
     multi_json (1.12.1)
     multi_test (0.1.2)
     nenv (0.3.0)
+    node (0.0.2)
+      eventmachine
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
@@ -284,6 +287,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  node
   pg
   rails (= 4.2.7.1)
   rerun
