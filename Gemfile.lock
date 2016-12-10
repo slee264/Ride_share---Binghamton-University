@@ -273,6 +273,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   email_format
+  execjs
   guard-rspec
   haml
   jbuilder (~> 2.0)
