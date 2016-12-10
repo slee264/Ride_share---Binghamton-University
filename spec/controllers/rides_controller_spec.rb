@@ -23,4 +23,5 @@ describe RidesController do
                 assert_select "h2", "You need to select all the fields."
             end
     end
+
 end
