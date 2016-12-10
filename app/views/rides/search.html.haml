@@ -1,5 +1,2 @@
--#%h2= "Departure Location: " + @search_departure
--#%h2= "Destination Location: " + @search_destination
-%h2= "Year: " + @search_year.inspect
 -@rides.each do |ride|
-    %h2= ride[:destination_location]
+    %h2= link_to "# " + ride[:id].to_s + ": " + ride[:dateAndTime].strftime("%Y, %m, %d, %a") + ", From: " + ride[:departure_location] + ", To: " + ride[:destination_location], ride_path(ride)

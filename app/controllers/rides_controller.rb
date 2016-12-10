@@ -27,7 +27,6 @@ class RidesController < ApplicationController
       @date = @newRide["dateAndTime(3i)"]
       @hour = @newRide["dateAndTime(4i)"]
       @minute = @newRide["dateAndTime(5i)"]
-      @newRide.inspect
     else
       @message = 'You need to select all the fields.'
     end
@@ -44,7 +43,6 @@ class RidesController < ApplicationController
   end
   
   def search
-    @ride = params[:search]
-    @rides = Ride.searchRides @ride
+    @rides = Ride.searchRides params[:search]
   end  
 end

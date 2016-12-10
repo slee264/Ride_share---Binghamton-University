@@ -23,5 +23,16 @@ describe RidesController do
                 assert_select "h2", "You need to select all the fields."
             end
     end
+<<<<<<< HEAD
 
+=======
+    
+    describe 'search for rides' do
+        
+        it 'searches for a ride' do
+            post :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
+            assert_select "h2", ""
+        end
+    end
+>>>>>>> 227d402599366a95c68aaeeed59a6da839b68061
 end
