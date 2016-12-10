@@ -30,7 +30,7 @@ Scenario: redirect to rides page when destination is searched
 	And I select "29" from "search_date_3i"
 	And I press "Search"
 	#Then I should see "2017"
-	#And I should see "October"
+	And I should see "October"
 	#And I should see" 29
 	# And I should see "Allegany County"
 	And I should see "Columbia County"
