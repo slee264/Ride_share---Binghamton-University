@@ -23,9 +23,6 @@ describe RidesController do
                 assert_select "h2", "You need to select all the fields."
             end
     end
-<<<<<<< HEAD
-
-=======
     
     describe 'search for rides' do
         
@@ -34,5 +31,4 @@ describe RidesController do
             assert_select "h2", ""
         end
     end
->>>>>>> 227d402599366a95c68aaeeed59a6da839b68061
 end
