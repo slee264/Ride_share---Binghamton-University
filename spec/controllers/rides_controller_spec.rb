@@ -28,7 +28,7 @@ describe RidesController do
         
         it 'searches for a ride' do
             post :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
-            assert_select "h2", ""
+            assert_select "h2", "Columbia County"
         end
     end
 end
