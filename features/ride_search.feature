@@ -29,8 +29,13 @@ Scenario: redirect to rides page when destination is searched
 	And I select "October" from "search_date_2i"
 	And I select "29" from "search_date_3i"
 	And I press "Search"
+<<<<<<< HEAD
 	#Then I should see "2017"
 	And I should see "October"
+=======
+	Then I should see "2017"
+	#And I should see "October"
+>>>>>>> 298b0d1dd10e3c7175127f84ff1f6b5fe3e4d08a
 	#And I should see" 29
 	# Then I should see "2017"
 	# And I should see "October"
