@@ -25,6 +25,6 @@ describe RidesController do
     end
     
     describe 'search for rides' do
-        
+        post :search
     end
 end
