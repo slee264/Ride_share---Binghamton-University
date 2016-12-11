@@ -51,16 +51,12 @@ class UsersController < ApplicationController
          @success = false
       end
       
-      if(User.exists?(:password => params[:user][:password]) == true)
-         @message = "User already exists with this password."
-         @success = false
-         @notExist = false
-      end
       if(User.exists?(:email => params[:user][:email]) == true)
          @message = "User already exists with this email."
          @success = false
          @notExist = false
       end
+      
       if(User.exists?(:first_name => params[:user][:first_name]) == true && User.exists?(:last_name => params[:user][:last_name]) == true)   
          @message = "User already exists with this name."
          @success = false
@@ -83,6 +79,10 @@ class UsersController < ApplicationController
    end
    
    def show
+      
+   end
+   
+   def login
       
    end
    

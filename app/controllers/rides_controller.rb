@@ -29,7 +29,7 @@ class RidesController < ApplicationController
       @hour = @newRide["dateAndTime(4i)"]
       @minute = @newRide["dateAndTime(5i)"]
       Ride.create!(ride_params)
-    else
+    elsif (@valid == false)
       @message = 'You need to select all the fields.'
     end
   end

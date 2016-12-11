@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
-
+has_secure_password
+=begin
     validate :bing_email
     def bing_email
         if not email.end_with? '@binghamton.edu'
             errors.add(:email, 'Must use Binghamton e-mail address')
         end
     end
+=end
+
+
 
 
 =begin
