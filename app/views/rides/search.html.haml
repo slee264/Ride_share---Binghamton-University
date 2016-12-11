@@ -1,3 +1,4 @@
+
 -#    -if @rides.present?
 -#    %tables#rides
 -#        %thead
@@ -17,3 +18,8 @@
 %h2= "Month: " + @search_month
 %h2= "Date: " + @search_date
 %h2= @ride.inspect            
+-if @valid
+    -@rides.each do |ride|
+        %h2= link_to "# " + ride[:id].to_s + ": " + ride[:dateAndTime].strftime("%Y, %m, %d, %a") + ", From: " + ride[:departure_location] + ", To: " + ride[:destination_location], ride_path(ride)
+-else 
+    %h1= @message

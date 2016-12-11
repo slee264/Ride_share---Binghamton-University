@@ -1,6 +1,6 @@
 %h1 Sign up
 
-= form_tag users_path, :autocomplete => :off, :method => :POST do
+= form_tag users_path, :autocomplete => :on, :method => :POST do
   = label :first_name, 'First Name'
   = text_field :user, :first_name
   %br

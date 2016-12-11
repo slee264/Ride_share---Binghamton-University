@@ -29,3 +29,7 @@
 # secrets!
 config/initializers/secret_token.rb
 
+
+# We don't need debugging history
+.byebug_history
+
