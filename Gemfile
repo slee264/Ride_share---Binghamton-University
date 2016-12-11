@@ -25,6 +25,8 @@ gem 'email_format'
 
 gem 'bootstrap-sass', '3.3.6'
 
+gem 'rdiscount', '~> 2.2.0'   #required for use of markdown in Haml files
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
