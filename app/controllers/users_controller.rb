@@ -79,7 +79,9 @@ class UsersController < ApplicationController
    end
    
    def show
-      
+      username = current_user[:email]
+      username.slice!('@binghamton.edu')
+      @message = 'Welcome ' + username + '!'
    end
    
    def login
