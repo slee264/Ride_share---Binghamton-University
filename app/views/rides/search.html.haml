@@ -1,2 +1,5 @@
--@rides.each do |ride|
-    %h2= link_to "# " + ride[:id].to_s + ": " + ride[:dateAndTime].strftime("%Y, %m, %d, %a") + ", From: " + ride[:departure_location] + ", To: " + ride[:destination_location], ride_path(ride)
+-if @valid
+    -@rides.each do |ride|
+        %h2= link_to "# " + ride[:id].to_s + ": " + ride[:dateAndTime].strftime("%Y, %m, %d, %a") + ", From: " + ride[:departure_location] + ", To: " + ride[:destination_location], ride_path(ride)
+-else 
+    %h1= @message

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'static_pages/about'
 
   get 'static_pages/help'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
 
   get 'static_pages/faq'
+=======
+  get 'sessions/new'
+>>>>>>> 08cb6b064ddc1e1e397fe812aea621190b6a0982
 
   # get 'users/' => 'users#create'
 
@@ -16,19 +20,28 @@ Rails.application.routes.draw do
   # get 'users/destroy'
   
   resources :rides do
-    # get 'search', on: :collection
     match 'search', :to => 'rides#search', :via => :get, :on => :collection
   end
   
-  resources :users
+  resources :users do
    # get 'users/' => 'users#create'
+  end
   
   root 'rides#index'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
+<<<<<<< HEAD
   get '/faq', to: 'static_pages#faq'
   
+=======
+
+  match 'login', :to => 'sessions#new', :via => :get
+  match 'login', :to => 'sessions#create', :via => :post
+  match 'logout', :to => 'sessions#destroy', :via => :delete
+
+
+>>>>>>> 08cb6b064ddc1e1e397fe812aea621190b6a0982
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

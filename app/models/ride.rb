@@ -67,7 +67,7 @@ class Ride < ActiveRecord::Base
     
     def self.searchRides ride
         d = Date.new(ride['date(1i)'].to_i, ride['date(2i)'].to_i, ride['date(3i)'].to_i)
-        
+            
         rides = Ride.where('DATE(dateAndTime) = ?', d)
         return rides.where(destination_location: ride[:destination], departure_location: ride[:departure])
     end

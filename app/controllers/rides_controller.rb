@@ -20,6 +20,7 @@ class RidesController < ApplicationController
       end
     end
     if @valid
+      @message = "Your ride has been posted."
       @departure = @newRide["departure_location"]
       @destination = @newRide["destination_location"]
       @year = @newRide["dateAndTime(1i)"]
@@ -27,10 +28,10 @@ class RidesController < ApplicationController
       @date = @newRide["dateAndTime(3i)"]
       @hour = @newRide["dateAndTime(4i)"]
       @minute = @newRide["dateAndTime(5i)"]
-    else
+      Ride.create!(ride_params)
+    elsif (@valid == false)
       @message = 'You need to select all the fields.'
     end
-    Ride.create!(ride_params)
   end
 
   def show
@@ -43,6 +44,22 @@ class RidesController < ApplicationController
   end
   
   def search
-    @rides = Ride.searchRides params[:search]
+    @valid = true
+    params[:search].each do |key, value|
+      if value == ""
+        @valid = false
+        break
+      end
+    end
+    if !@valid
+      @message = 'You need to select all the fields!'
+    end
+    
+    if @valid
+      @rides = Ride.searchRides params[:search]
+    else
+      @rides = []
+    end
+
   end  
 end

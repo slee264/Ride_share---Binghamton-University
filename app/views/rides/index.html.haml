@@ -6,13 +6,13 @@
     %br
     = form_tag search_rides_path, :method => :GET do
         = label :search, :departure, 'Departure Location'
-        = select :search, :departure, @all_NY_counties
+        = select :search, :departure, @all_NY_counties, {:prompt => 'Departure'}
     
         = label :search, :destination, 'Destination Location'
-        = select :search, :destination, @all_NY_counties
-    
+        = select :search, :destination, @all_NY_counties, {:prompt => 'Destination'}
+        %br
         = label :search, :date, 'On'
-        = date_select :search, :date
+        = date_select :search, :date, {:prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}}
     
         = submit_tag 'Search'
         

@@ -40,7 +40,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3'
   gem 'byebug'
-  gem 'bcrypt'
   gem 'rerun'
 end
 
@@ -48,7 +47,6 @@ group :test do
   gem 'rspec-core', "3.4.4"
   gem 'rspec-rails', "~>3.4.2"
   gem 'guard-rspec'
-  gem 'bcrypt'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
