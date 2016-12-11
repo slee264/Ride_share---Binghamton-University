@@ -63,7 +63,11 @@ class UsersController < ApplicationController
          @notExist = false
       end
       
-      User.create!(user_params) if @success == true && @notExist == true
+      if !@success
+         render 'new'
+      else
+         User.create!(user_params) if @success == true && @notExist == true
+      end
       # flash[:success] = "Welcome to Bu RideShare!!!"
       # redirect_to root_path
    end

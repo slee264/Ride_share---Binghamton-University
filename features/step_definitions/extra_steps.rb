@@ -14,6 +14,14 @@ Given /the following locations exist/ do |rides_table|
 	
 end
 
+Given /the following users exist/ do |users_table|
+	
+	users_table.hashes.each do |user|
+		
+		User.create!(user)
+	end
+end
+
 
 Then /^(?:|I )should only see the following counties: (.*)$/ do |counties|
 	specified_counties = counties.split(', ')
