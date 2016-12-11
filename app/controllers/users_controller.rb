@@ -16,7 +16,7 @@ class UsersController < ApplicationController
    end
    
    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
       # Do not add password_confirmation here inside the permit. This grants authority to use those values to create a user.
    end
 
