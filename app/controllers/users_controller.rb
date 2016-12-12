@@ -25,12 +25,13 @@ class UsersController < ApplicationController
    
    def create
 
+      @allValuesPresent = true
       @success = true
       @notExist = true   
       params[:user].each do |key, value|
          if !value.present?
-            @message = "One or more fields is empty."
             @success = false
+            @message = "One or more fields is empty."
             return
          end
       end
@@ -44,30 +45,31 @@ class UsersController < ApplicationController
       if (params[:user][:password] != params[:post][:password_confirmation])
          @message = "The password fields don't match."
          @success = false
+         return
       end
       
       if (params[:user][:password].length < 7)
          @message = "The password must be 7 characters or more."
          @success = false
+         return
       end
       
       if(User.exists?(:email => params[:user][:email]) == true)
          @message = "User already exists with this email."
          @success = false
          @notExist = false
+         return
       end
       
       if(User.exists?(:first_name => params[:user][:first_name]) == true && User.exists?(:last_name => params[:user][:last_name]) == true)   
          @message = "User already exists with this name."
          @success = false
          @notExist = false
+         return
       end
-      
-      if !@success
-         render 'new'
-      else
-         User.create!(user_params) if @success == true && @notExist == true
-      end
+
+
+      User.create!(user_params) if @success == true && @notExist == true
       # flash[:success] = "Welcome to Bu RideShare!!!"
       # redirect_to root_path
    end
