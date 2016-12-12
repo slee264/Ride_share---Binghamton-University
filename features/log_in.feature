@@ -14,7 +14,7 @@ Background: users have been added to database
   
   And I am on the BURideShare home page
   
-Scenario: Log in successfully
+Scenario: User logs in with right email address and password
   
   When I follow "Log in"
   Then I fill in "E-Mail Address" with "mprice3@binghamton.edu"
@@ -22,7 +22,7 @@ Scenario: Log in successfully
   And I press "Log in"
   And I should see "Welcome mprice3!"
   
-Scenario: User fails to log in 
+Scenario: User logs in  
   
   When I follow "Log in"
   And I press "Log in"
