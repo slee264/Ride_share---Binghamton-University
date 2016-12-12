@@ -26,10 +26,6 @@ RSpec.describe RidesController, type: :controller do
     
     describe 'search for rides' do
         it 'searches for a ride' do
-<<<<<<< HEAD
-            post :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
-            assert_select "h2", "Columbia County"
-=======
             post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "dateAndTime(1i)" => 2017, "dateAndTime(2i)" => 10, "dateAndTime(3i)" => 29, "dateAndTime(4i)" => 5, "dateAndTime(5i)" => 40}}
             post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "dateAndTime(1i)" => 2017, "dateAndTime(2i)" => 10, "dateAndTime(3i)" => 29, "dateAndTime(4i)" => 12, "dateAndTime(5i)" => 37}}
             
@@ -44,7 +40,6 @@ RSpec.describe RidesController, type: :controller do
         it 'searches for a ride with at least one empty field' do
             get :search, {:search => {"departure" => "", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
             assert_select "h1", "You need to select all the fields!"
->>>>>>> 08cb6b064ddc1e1e397fe812aea621190b6a0982
         end
     end
 end
