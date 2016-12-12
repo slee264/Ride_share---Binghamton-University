@@ -8,11 +8,12 @@ class RidesController < ApplicationController
   end
   
   def ride_params
-    params.require(:ride).permit(:departure_location, :destination_location, :dateAndTime)
+    params.require(:ride).permit(:departure_location, :destination_location, :dateAndTime, :poster_user_id)
   end
 
   def create
     @newRide = params[:ride]
+    @newRide["poster_user_id"] = session[:user_id] #so we can record the user ID
     @valid = true
     @newRide.each do |key, value|
       if value == ""
@@ -28,6 +29,7 @@ class RidesController < ApplicationController
       @date = @newRide["dateAndTime(3i)"]
       @hour = @newRide["dateAndTime(4i)"]
       @minute = @newRide["dateAndTime(5i)"]
+      @posterUserId = @newRide["poster_user_id"]
       Ride.create!(ride_params)
     elsif (@valid == false)
       @message = 'You need to select all the fields.'
