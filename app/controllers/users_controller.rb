@@ -54,6 +54,12 @@ class UsersController < ApplicationController
          return
       end
       
+      if (params[:user][:password].include? ' ')
+         @message = "The password cannot contain a space."
+         @success = false
+         return
+      end
+      
       if(User.exists?(:email => params[:user][:email]) == true)
          @message = "User already exists with this email."
          @success = false
