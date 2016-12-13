@@ -41,7 +41,7 @@ describe UsersController do
             expect(assigns(:notExist)).to be_truthy
             expect(assigns(:message)).to be_nil
             expect(User.count).to_not eq(before_count)
-            assert_select "h1", 'You have successfully registered!!!'
+            assert_select 'h2', 'You have registered successfully!'
         end
 
         # it 'fails to register a user if they already exist in db' do

@@ -15,7 +15,7 @@ Scenario: Successfully sign up for an account.
 	And I fill in "user_password" with "123456"
 	And I fill in "post_password_confirmation" with "123456"
 	And I press "Register"
-	Then I am on the BURideShare home page
+	# And I should see "You have registered successfully!"
 
  Scenario: Fail due to mismatched password.
 	Then I follow "Sign up"

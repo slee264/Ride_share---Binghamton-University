@@ -12,7 +12,7 @@
         = select :search, :destination, @all_NY_counties, {:prompt => 'Destination'}
         %br
         = label :search, :date, 'On'
-        = date_select :search, :date, {:prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}}
+        = date_select :search, :date, {:start_year => Date.today.year, :end_year => Date.today.year + 1, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}}
     
         = submit_tag 'Search'
         

@@ -1,5 +1,25 @@
 -if @valid
-    -@rides.each do |ride|
-        %h2= link_to "# " + ride[:id].to_s + ": " + ride[:dateAndTime].strftime("%Y, %m, %d, %a") + ", From: " + ride[:departure_location] + ", To: " + ride[:destination_location], ride_path(ride)
--else 
-    %h1= @message
+        %table{:border => 1}
+                %tbody
+                        %tr
+                        %td From
+                        %td To
+                        %td Year
+                        %td Month
+                        %td Day
+                        %td Hour 
+                        %td Minute
+                        %td Time
+                        -@rides.each do |ride|
+                                %tr
+                                %td= ride[:departure_location]
+                                %td= ride[:destination_location]
+                                %td= ride[:id].to_s
+                                %td= ride[:dateAndTime].strftime("%Y")
+                                %td= ride[:dateAndTime].strftime("%m")
+                                %td= ride[:dateAndTime].strftime("%d")
+                                %td= ride[:dateAndTime].strftime("%I")
+                                %td= ride[:dateAndTime].strftime("%M")
+                                %td= ride[:dateAndTime].strftime("%p")
+-else
+        %h1= @message

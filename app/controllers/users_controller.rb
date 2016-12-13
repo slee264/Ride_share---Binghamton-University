@@ -12,7 +12,7 @@ class UsersController < ApplicationController
    @@BLANK_FIELD_MESSAGE = "The %s field is empty. Please make sure all fields are filled in and try again"
    @@LENGTH_MESSAGE = ""
    def index
-   
+      
    end
    
    def user_params
@@ -68,7 +68,6 @@ class UsersController < ApplicationController
          return
       end
 
-
       User.create!(user_params) if @success == true && @notExist == true
       # flash[:success] = "Welcome to Bu RideShare!!!"
       # redirect_to root_path
@@ -86,6 +85,7 @@ class UsersController < ApplicationController
    
    def show
       username = current_user[:email]
+      userid = current_user[:id]
       username.slice!('@binghamton.edu')
       @message = 'Welcome ' + username + '!'
    end
