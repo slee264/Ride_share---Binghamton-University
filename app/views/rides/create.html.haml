@@ -3,15 +3,26 @@
 %br
 
 -if @valid
-    %h2= "Departure Location: " + @departure
-    %h2= "Destination Location: " + @destination
-    %h2= "Year: " + @year
-    %h2= "Month: " + @month
-    %h2= "Date: " + @date
-    %h2= "Hour: " + @hour
-    %h2= "Minute: " + @minute
-    %h2= @newRide.inspect
-- else
-    Yo
     %h2= @message
+    = "Departure Location: " + @departure
+    %br
+    = "Destination Location: " + @destination
+    %br
+    = "Year: " + @year
+    %br
+    = "Month: " + @month
+    %br
+    = "Date: " + @date
+    %br
+    = "Hour: " + @hour
+    %br
+    = "Minute: " + @minute
+    %br
+    = "Posted by user: #{@posterUserId}"
+    %br
+- else
+    %h1= @message
+%br
+%br
+%br
 = link_to "Post another ride.", new_ride_path

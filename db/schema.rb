@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208194809) do
+ActiveRecord::Schema.define(version: 20161211234409) do
 
   create_table "rides", force: :cascade do |t|
     t.string   "departure_location"
@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20161208194809) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.datetime "dateAndTime"
+    t.integer  "poster_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"

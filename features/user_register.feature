@@ -12,10 +12,10 @@ Scenario: Successfully sign up for an account.
 	Then I fill in "user_first_name" with "Magie"
 	And I fill in "user_last_name" with "Wu"
 	Then I fill in "user_email" with "XXXXXXX@binghamton.edu"
-	And I fill in "user_password" with "123456"
-	And I fill in "post_password_confirmation" with "123456"
+	And I fill in "user_password" with "1234567"
+	And I fill in "post_password_confirmation" with "1234567"
 	And I press "Register"
-	Then I am on the BURideShare home page
+	And I should see "You have registered successfully!"
 
  Scenario: Fail due to mismatched password.
 	Then I follow "Sign up"
@@ -64,7 +64,3 @@ Scenario: Fail due to an invalid email.
  	Then I should see "The password must be 7 characters or more."
  	Then I follow "Try Again"
  	Then I am on the new_user page
-   
-   
-   
-   

@@ -21,18 +21,15 @@ Background: locations have been added to database
 	And I am on the BURideShare home page
 
 Scenario: redirect to rides page when destination is searched 
-  #choose form selectbox, whats id of select box?
-	When I select "Allegany County" from "Departure Location"
-	When I select "Columbia County" from "Destination Location"
-	#selectbox for date? error message showing selectbox On does not exist
+
+	When I select "Albany County" from "Departure Location"
+	And I select "Allegany County" from "Destination Location"
 	And I select "2016" from "search_date_1i"
 	And I select "October" from "search_date_2i"
-	And I select "29" from "search_date_3i"
+	And I select "31" from "search_date_3i"
 	And I press "Search"
-	#Then I should see "2016"
-	#And I should see "October"
-#	And I should see" 29
+	Then I should see "2016"
+	And I should see "10"
+	And I should see "31"
+	And I should see "Albany County"
 	And I should see "Allegany County"
-	And I should see "Columbia County"
-	#need to implement 
-#	And I should only see the following counties: Kings County, Chautauqua County

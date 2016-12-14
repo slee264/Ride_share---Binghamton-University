@@ -3,9 +3,16 @@
         <%= link_to "RideShare", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
+            
             <li><%= link_to "Home", root_path, id: "home" %></li>
             <li><%= link_to "Help", help_path, id: "help" %></li>
-            <li><%= link_to "Log in", '#', id: "login" %></li>
+            <% if logged_in? %>
+              <% username = current_user[:email] %>
+              <% username.slice!('@binghamton.edu') %>
+              <li><%= link_to "Log out " + username, logout_path%></li>
+            <% else %>
+              <li><%= link_to "Log in", login_path, id: "login"%></li>
+            <% end %>
           </ul>
         </nav>
       </div>

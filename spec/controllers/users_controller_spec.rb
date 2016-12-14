@@ -41,20 +41,18 @@ describe UsersController do
             expect(assigns(:notExist)).to be_truthy
             expect(assigns(:message)).to be_nil
             expect(User.count).to_not eq(before_count)
-            assert_select "h1", 'You have successfully registered!!!'
+            assert_select 'h2', 'You have registered successfully!'
         end
 
-=begin        
-        it 'fails to register a user if they already exist in db' do
-            before_count = User.count
-            post :create, {:user => {:first_name => 'Joe', :last_name => 'Lee', :email => 'slee264@binghamton.edu', :password => '1234567'}, :post => {:password_confirmation => '1234567'}}
-            assert_template 'users/create'
-            expect(assigns(:success)).to be_falsey
-            expect(assigns(:notExist)).to be_falsey
-            expect(User.count).to eq(before_count)   
-            assert_select "h2", ''
-        end
-=end        
+        # it 'fails to register a user if they already exist in db' do
+        #     before_count = User.count
+        #     post :create, {:user => {:first_name => 'Joe', :last_name => 'Lee', :email => 'slee264@binghamton.edu', :password => '1234567'}, :post => {:password_confirmation => '1234567'}}
+        #     assert_template 'users/create'
+        #     expect(assigns(:success)).to be_falsey
+        #     expect(assigns(:notExist)).to be_falsey
+        #     expect(User.count).to eq(before_count)   
+        #     assert_tag :tag => 'h2'
+        # end
     end
 
 

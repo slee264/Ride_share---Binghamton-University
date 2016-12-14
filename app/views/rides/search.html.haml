@@ -1,13 +1,24 @@
--# -if @rides.present?
--# %tables#rides
--#  %thead
--#   %tr
--#    %th Departure Location
--#    %th Destination Location
--#    %th Date and Time
--#  %tbody
--#   - @rides.each do |ride|
--#    %tr
--#      %td=ride.departure_location
--#     %td=ride.destination_location
--#      %td=ride.dateAndTime
+-if @valid
+        %table{:border => 1}
+                %tbody
+                        %tr
+                                %td From
+                                %td To
+                                %td Year
+                                %td Month
+                                %td Day
+                                %td Hour 
+                                %td Minute
+                                %td Time
+                        -@rides.each do |ride|
+                                %tr
+                                        %td= ride[:departure_location]
+                                        %td= ride[:destination_location]
+                                        %td= ride[:dateAndTime].strftime("%Y")
+                                        %td= ride[:dateAndTime].strftime("%m")
+                                        %td= ride[:dateAndTime].strftime("%d")
+                                        %td= ride[:dateAndTime].strftime("%I")
+                                        %td= ride[:dateAndTime].strftime("%M")
+                                        %td= ride[:dateAndTime].strftime("%p")
+-else
+        %h1= @message

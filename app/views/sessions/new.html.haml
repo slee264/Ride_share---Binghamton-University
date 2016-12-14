@@ -1,0 +1,21 @@
+%h1 Log in
+
+%h2= flash[:danger]
+
+= form_tag login_path, :autocomplete => :on, :method => :POST do
+
+  = label :session, :email, 'E-Mail Address'
+  = text_field :session, :email
+  %br
+  = label :session, :password, 'Password'
+  = password_field :session, :password
+  %br
+
+
+  %br
+  = submit_tag "Log in"
+  %br
+  %h2= "If you're not a user, sign up now!"
+  
+.center
+  = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"

@@ -12,11 +12,11 @@ class UsersController < ApplicationController
    @@BLANK_FIELD_MESSAGE = "The %s field is empty. Please make sure all fields are filled in and try again"
    @@LENGTH_MESSAGE = ""
    def index
-   
+      
    end
    
    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
       # Do not add password_confirmation here inside the permit. This grants authority to use those values to create a user.
    end
 
@@ -25,12 +25,13 @@ class UsersController < ApplicationController
    
    def create
 
+      @allValuesPresent = true
       @success = true
       @notExist = true   
       params[:user].each do |key, value|
          if !value.present?
-            @message = "One or more fields is empty."
             @success = false
+            @message = "One or more fields is empty."
             return
          end
       end
@@ -44,29 +45,35 @@ class UsersController < ApplicationController
       if (params[:user][:password] != params[:post][:password_confirmation])
          @message = "The password fields don't match."
          @success = false
+         return
       end
       
       if (params[:user][:password].length < 7)
          @message = "The password must be 7 characters or more."
          @success = false
+         return
       end
       
-      if(User.exists?(:password => params[:user][:password]) == true)
-         @message = "User already exists with this password."
+      if (params[:user][:password].include? ' ')
+         @message = "The password cannot contain a space."
          @success = false
-         @notExist = false
+         return
       end
+      
       if(User.exists?(:email => params[:user][:email]) == true)
          @message = "User already exists with this email."
          @success = false
          @notExist = false
+         return
       end
+      
       if(User.exists?(:first_name => params[:user][:first_name]) == true && User.exists?(:last_name => params[:user][:last_name]) == true)   
          @message = "User already exists with this name."
          @success = false
          @notExist = false
+         return
       end
-      
+
       User.create!(user_params) if @success == true && @notExist == true
       # flash[:success] = "Welcome to Bu RideShare!!!"
       # redirect_to root_path
@@ -83,6 +90,13 @@ class UsersController < ApplicationController
    end
    
    def show
+      username = current_user[:email]
+      userid = current_user[:id]
+      username.slice!('@binghamton.edu')
+      @message = 'Welcome ' + username + '!'
+   end
+   
+   def login
       
    end
    
