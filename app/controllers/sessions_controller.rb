@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     @message = "You have been logged out."
-    redirect_to root_path
   end
   
 end
