@@ -41,7 +41,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
   gem 'rerun'
-  gem 'sqlite3'
 end
 
 group :test do
