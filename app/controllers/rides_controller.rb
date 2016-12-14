@@ -34,6 +34,7 @@ class RidesController < ApplicationController
     elsif (@valid == false)
       @message = 'You need to select all the fields.'
     end
+
   end
 
   def show

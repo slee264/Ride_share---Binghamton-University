@@ -10,7 +10,7 @@
     %br
     %br
     
-    = label :ride, :dateAndTime, 'Time '
-    = datetime_select :ride, :dateAndTime, {:start_year => Date.today.year, :end_year => Date.today.year + 1, :prompt => true}
+    = label :ride, :date_and_time, 'Time '
+    = datetime_select :ride, :date_and_time, {:start_year => Date.today.year, :end_year => Date.today.year + 1, :prompt => true}
     
     = submit_tag 'Post'
