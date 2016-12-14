@@ -15,11 +15,11 @@
                                         %tr
                                                 %td= ride[:departure_location]
                                                 %td= ride[:destination_location]
-                                                %td= ride[:dateAndTime].strftime("%Y")
-                                                %td= ride[:dateAndTime].strftime("%m")
-                                                %td= ride[:dateAndTime].strftime("%d")
-                                                %td= ride[:dateAndTime].strftime("%I")
-                                                %td= ride[:dateAndTime].strftime("%M")
-                                                %td= ride[:dateAndTime].strftime("%p")
+                                                %td= ride[:date_and_time].strftime("%Y")
+                                                %td= ride[:date_and_time].strftime("%m")
+                                                %td= ride[:date_and_time].strftime("%d")
+                                                %td= ride[:date_and_time].strftime("%I")
+                                                %td= ride[:date_and_time].strftime("%M")
+                                                %td= ride[:date_and_time].strftime("%p")
 -else
         %h1= @message
