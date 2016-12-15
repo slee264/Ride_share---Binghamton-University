@@ -1,16 +1,42 @@
-%h1 Post A Ride
+:javascript
+    $( function() {
+        $( "#ride_datepicker" ).datepicker({
+            minDate: 0, maxDate: "+3M",
+            showOn: "button",
+            buttonImage: "../assets/calendar.png",
+            buttonImageOnly: true,
+            buttonText: "Select date"
+        } );
+    } );
+    $( function() {
+        $( "#ride_timepicker" ).timepicker({
+            showOn: "button",
+            buttonImage: "../assets/clock.png",
+            buttonImageOnly: true,
+            buttonText: "Select time",
+            controlType: 'select',
+        	timeFormat: 'hh:mm tt'
+        });
+    } );
 
-= form_tag rides_path, :method => :POST do
-    = label :ride, :departure, 'Departure Location'
-    = select :ride, :departure_location, @all_NY_counties, {:prompt => 'Departure'}
+.center.jumbotron
+    %h1 Post A Ride
+    
+    = form_tag rides_path, :method => :POST do
+        = label :ride, :departure, 'Departure Location'
+        = select :ride, :departure_location, @all_NY_counties, {:prompt => 'Departure'}
+    
+        = label :ride, :destination, 'Destination Location'
+        = select :ride, :destination_location, @all_NY_counties, {:prompt => 'Destination'}
+        
+        %br
+        %br
+    
+        = label :search, :date, 'Date'
+        %input#ride_datepicker{:type => "text", :name => 'ride[date]', :value => "#{Date.today().strftime('%m/%d/%Y')}"}/
+        
+        = label :ride, :time, 'Time '   
+        %input#ride_timepicker{:type => "text", :name => 'ride[time]', :value => '1:00 pm'}/
+        
+        = submit_tag 'Post'
 
-    = label :ride, :destination, 'Destination Location'
-    = select :ride, :destination_location, @all_NY_counties, {:prompt => 'Destination'}
-    
-    %br
-    %br
-    
-    = label :ride, :date_and_time, 'Time '
-    = datetime_select :ride, :date_and_time, {:start_year => Date.today.year, :end_year => Date.today.year + 1, :prompt => true}
-    
-    = submit_tag 'Post'

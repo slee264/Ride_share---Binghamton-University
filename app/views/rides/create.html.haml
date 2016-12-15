@@ -8,17 +8,9 @@
     %br
     = "Destination Location: " + @destination
     %br
-    = "Year: " + @year
+    = "Date & Time: #{@date_and_time}"
     %br
-    = "Month: " + @month
-    %br
-    = "Date: " + @date
-    %br
-    = "Hour: " + @hour
-    %br
-    = "Minute: " + @minute
-    %br
-    = "Posted by user: " + @name
+    = "Posted by user: #{@name}   (user ##{@posterUserId})"
     %br
 - else
     %h1= @message
