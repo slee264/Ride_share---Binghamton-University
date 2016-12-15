@@ -28,4 +28,6 @@
         = submit_tag 'Search'
     %br
     = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
-    = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"
+    -if logged_in?
+        = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"
+

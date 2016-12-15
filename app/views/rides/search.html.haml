@@ -10,15 +10,16 @@
                                 %td Hour 
                                 %td Minute
                                 %td Time
-                        -@rides.each do |ride|
-                                %tr
-                                        %td= ride[:departure_location]
-                                        %td= ride[:destination_location]
-                                        %td= ride[:date_and_time].strftime("%Y")
-                                        %td= ride[:date_and_time].strftime("%m")
-                                        %td= ride[:date_and_time].strftime("%d")
-                                        %td= ride[:date_and_time].strftime("%I")
-                                        %td= ride[:date_and_time].strftime("%M")
-                                        %td= ride[:date_and_time].strftime("%p")
+                        -if @rides
+                                -@rides.each do |ride|
+                                        %tr
+                                                %td= ride[:departure_location]
+                                                %td= ride[:destination_location]
+                                                %td= ride[:date_and_time].strftime("%Y")
+                                                %td= ride[:date_and_time].strftime("%m")
+                                                %td= ride[:date_and_time].strftime("%d")
+                                                %td= ride[:date_and_time].strftime("%I")
+                                                %td= ride[:date_and_time].strftime("%M")
+                                                %td= ride[:date_and_time].strftime("%p")
 -else
         %h1= @message

@@ -20,15 +20,21 @@ RSpec.describe RidesController, type: :controller do
     
     describe 'search for rides' do
         it 'searches for a ride' do
-            get :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
-            assert_template 'rides/search'  
 
-            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "dateAndTime(1i)" => 2017, "dateAndTime(2i)" => 10, "dateAndTime(3i)" => 29, "dateAndTime(4i)" => 5, "dateAndTime(5i)" => 40}}
-            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "dateAndTime(1i)" => 2017, "dateAndTime(2i)" => 10, "dateAndTime(3i)" => 29, "dateAndTime(4i)" => 12, "dateAndTime(5i)" => 37}}
+            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date_and_time(1i)" => 2017, "date_and_time(2i)" => 10, "date_and_time(3i)" => 29, "date_and_time(4i)" => 5, "date_and_time(5i)" => 40}}
+            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date_and_time(1i)" => 2017, "date_and_time(2i)" => 10, "date_and_time(3i)" => 29, "date_and_time(4i)" => 12, "date_and_time(5i)" => 37}}
             
             get :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
+            
             assert_select 'tr' do |elements|
-                assert_select 'td'
+                assert_select 'td', 'From'
+                assert_select 'td', 'To'
+                assert_select 'td', 'Year'
+                assert_select 'td', 'Month'
+                assert_select 'td', 'Day'
+                assert_select 'td', 'Hour'
+                assert_select 'td', 'Minute'
+                assert_select 'td', 'Time'
             end
         end
         

@@ -1,3 +1,16 @@
+Given /^I am logged in/ do
+	#email = 'mprice3@binghamton.edu'
+	#password = 'goodmusic'
+
+	#visit login_path
+	
+	#fill_in("Password", :with => password)
+	#click_button "Post a Ride"
+	#expect(page).to have_text("Welcome mprice3!")
+end
+
+
+
 Given /the following locations exist/ do |rides_table|
 	
 	# p rides_table
