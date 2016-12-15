@@ -34,6 +34,7 @@ describe UsersController do
         end
         
         it 'registers a user successfully' do
+            
             @before_count = User.count
             post :create, {:user => {:first_name => 'Joe', :last_name => 'Lee', :email => 'slee264@binghamton.edu', :password => '1234567'}, :post => {:password_confirmation => '1234567'}}
             assert_template 'users/create'
