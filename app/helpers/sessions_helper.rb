@@ -13,6 +13,6 @@ module SessionsHelper
     end
     
     def current_session
-       session 
+
     end
 end

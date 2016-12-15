@@ -14,8 +14,10 @@ class RidesController < ApplicationController
   end
 
   def create
-    @name = current_user[:email]
-    @name.slice!('@binghamton.edu')
+    if logged_in?
+      @name = current_user[:email]
+      @name.slice!('@binghamton.edu')
+    end
     @newRide = params[:ride]
     @newRide["poster_user_id"] = session[:user_id] #so we can record the user ID
     @valid = true
