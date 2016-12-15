@@ -24,9 +24,7 @@ Scenario: redirect to rides page when destination is searched
 
 	When I select "Albany County" from "Departure Location"
 	And I select "Allegany County" from "Destination Location"
-	And I select "2016" from "search_date_1i"
-	And I select "October" from "search_date_2i"
-	And I select "31" from "search_date_3i"
+	And I fill in "search_datepicker" with "10/31/2016"
 	And I press "Search"
 	Then I should see "2016"
 	And I should see "10"
