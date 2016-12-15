@@ -6,13 +6,13 @@ RSpec.describe RidesController, type: :controller do
     describe 'post a ride' do
         
             it 'posts a ride' do
-                post :create, {:ride => {"departure_location" => "Bronx County", "destination_location" => "Broome County", "dateAndTime(1i)" => "2016", "dateAndTime(2i)" => "3", "dateAndTime(3i)" => "3", "dateAndTime(4i)" => "12", "dateAndTime(5i)" => "44"}}
+                post :create, {:ride => {"departure_location" => "Bronx County", "destination_location" => "Broome County", "ride_datepicker" => "10/23/2017", "ride_timepicker" => "3:30 pm"}}
                 assert_template 'rides/create'
                 assert_select "h2", "Your ride has been posted."
             end
             
             it 'fails to post a ride if user does not select anything' do
-                post :create, {:ride => {"departure_location" => "", "destination_location" => "", "dateAndTime(1i)" => "", "dateAndTime(2i)" => "", "dateAndTime(3i)" => "", "dateAndTime(4i)" => "", "dateAndTime(5i)" => ""}}
+                post :create, {:ride => {"departure_location" => "Bronx County", "destination_location" => "Broome County", "ride_timepicker" => "3:30 pm"}}
                 assert_template 'rides/create'
                 assert_select "h1", "You need to select all the fields."
             end
