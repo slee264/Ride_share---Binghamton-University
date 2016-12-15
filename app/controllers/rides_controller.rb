@@ -55,7 +55,7 @@ class RidesController < ApplicationController
       # we use American format (MM/DD/YYYY), so we need to convert.
       date_match = RideShareUtil.date_regex.match params[:ride]['date']
       euro_date_str = "#{date_match['day']}/#{date_match['month']}/#{date_match['year']}"
-      @date_and_time = DateTime.parse("#{euro_date_str} #{params[:ride]['time']}")
+      @date_and_time = DateTime.parse("#{euro_date_str} #{params[:ride]['time']} #{Time.zone.formatted_offset}")
       params[:ride][:date_and_time] = @date_and_time
       
       Ride.create!(ride_params)
