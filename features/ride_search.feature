@@ -10,7 +10,7 @@ Background: locations have been added to database
 
 	Given the following locations exist:
 	  
-		| departure_location | destination_location| dateAndTime			  |
+		| departure_location | destination_location| date_and_time			  |
 	    | Albany County      | Allegany County     | 31-Oct-2016     10:05    |          
 		| Allegany County    | Bronx County        | 1-Nov-2016      0:10     |
 		| Bronx County       | Broome County       | 2-Nov-2016      11:30    |

@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   
   def destroy
     session[:user_id] = nil
-    @message = "You have been logged out."
+    @message = "You have logged out successfully."
   end
   
 end
