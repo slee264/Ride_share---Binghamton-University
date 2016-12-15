@@ -1,3 +1,28 @@
 // Place all the styles related to the Rides controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th {
+    border-bottom: 4px solid black;
+    font-weight: bold;
+    text-align: center;
+}
+table#ride_search_results {
+  margin: 10px;
+  width: 100%;
+  border: 2px solid black;
+}
+table#ride_search_results th {
+  border: 2px solid black;
+  font-weight: bold;
+  text-align: center;
+}
+table#ride_search_results td {
+  padding: 4px;
+  text-align: left;
+}
