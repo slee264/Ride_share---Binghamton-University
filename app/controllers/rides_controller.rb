@@ -10,7 +10,7 @@ class RidesController < ApplicationController
   end
   
   def ride_params
-    params.require(:ride).permit(:departure_location, :destination_location, :dateAndTime, :poster_user_id)
+    params.require(:ride).permit(:departure_location, :destination_location, :date_and_time, :poster_user_id)
   end
 
   def create

@@ -72,7 +72,7 @@ class Ride < ActiveRecord::Base
         
         d = Date.new(date_match['year'].to_i, date_match['month'].to_i, date_match['day'].to_i)
         
-        rides = Ride.where('DATE(dateAndTime) = ?', d)
+        rides = Ride.where('DATE(date_and_time) = ?', d)
         return rides.where(destination_location: ride[:destination], departure_location: ride[:departure])
     end
 end
