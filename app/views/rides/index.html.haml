@@ -1,25 +1,37 @@
 -#  This file is app/views/rides/index.html.haml
-
-.center.jumbotron
-
-    %h1 RideShare
-    %br
-    = form_tag search_rides_path, :method => :GET do
-        = label :search, :departure, 'Departure Location'
-        = select :search, :departure, @all_NY_counties, {:prompt => 'Departure'}
-    
-        = label :search, :destination, 'Destination Location'
-        = select :search, :destination, @all_NY_counties, {:prompt => 'Destination'}
-        %br
-        = label :search, :date, 'On'
-        = date_select :search, :date, {:start_year => Date.today.year, :end_year => Date.today.year + 1, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}}
-    
-        = submit_tag 'Search'
-        
-        %br
-        %br
-        %br
-          
-    = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
-    = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"
-
+!!!
+%html{:lang => "en"}
+    %head
+        %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+        %meta{:charset => "utf-8"}/
+        %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+        %title BURideShare
+        :javascript
+            $( function() {
+                $( "#search_datepicker" ).datepicker({
+                    minDate: 0, maxDate: "+3M",
+                    showOn: "button",
+                    buttonImage: "assets/calendar.png",
+                    buttonImageOnly: true,
+                    buttonText: "Select date"
+                } );
+            } );
+        %body
+            .center.jumbotron
+                %h1 RideShare
+                %br
+                = form_tag search_rides_path, :method => :GET do
+                    = label :search, :departure, 'Departure Location'
+                    = select :search, :departure, @all_NY_counties, {:prompt => 'Departure'}
+                
+                    = label :search, :destination, 'Destination Location'
+                    = select :search, :destination, @all_NY_counties, {:prompt => 'Destination'}
+                    %br
+                    = label :search, :date, 'On'
+                    %input#search_datepicker{:type => "text", :name => 'search[date]', :value => "#{Date.today().strftime('%m/%d/%Y')}"}/
+                    
+                    %br
+                    = submit_tag 'Search'
+                %br
+                = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
+                = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"

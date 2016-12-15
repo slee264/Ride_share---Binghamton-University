@@ -1,4 +1,6 @@
 class RidesController < ApplicationController
+  @@date_regex = /(?<month>\d{1,2})\/(?<day>\d{1,2})\/(?<year>\d{4})/
+  
   def index
     @all_NY_counties = Ride.all_NYcounties
   end
@@ -55,6 +57,13 @@ class RidesController < ApplicationController
     end
     if !@valid
       @message = 'You need to select all the fields!'
+    end
+    
+    # If we're still valid that means all the fields are filled in, but
+    # is the date field in the valid format?
+    if @valid and not params[:search]['date'].match @@date_regex
+      @valid = false
+      @message = "Improper date format! Format should be MM/DD/YYYY."
     end
     
     if @valid

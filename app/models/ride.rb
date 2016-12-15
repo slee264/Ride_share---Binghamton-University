@@ -1,4 +1,5 @@
 class Ride < ActiveRecord::Base
+    @@date_regex = /(?<month>\d{1,2})\/(?<day>\d{1,2})\/(?<year>\d{4})/
     
     def self.all_NYcounties
         ["Albany County",
@@ -66,7 +67,11 @@ class Ride < ActiveRecord::Base
     end
     
     def self.searchRides ride
-        d = Date.new(ride['date(1i)'].to_i, ride['date(2i)'].to_i, ride['date(3i)'].to_i)
+        date_match = @@date_regex.match ride[:date]
+        # if the match is NIL, we should fail; invalid format
+        
+        d = Date.new(date_match['year'].to_i, date_match['month'].to_i, date_match['day'].to_i)
+        
         rides = Ride.where('DATE(dateAndTime) = ?', d)
         return rides.where(destination_location: ride[:destination], departure_location: ride[:departure])
     end
