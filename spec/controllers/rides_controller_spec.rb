@@ -6,25 +6,32 @@ RSpec.describe RidesController, type: :controller do
     describe 'post a ride' do
         
             it 'posts a ride' do
-                post :create, {:ride => {"departure_location" => "Bronx County", "destination_location" => "Broome County", "ride_datepicker" => "10/23/2017", "ride_timepicker" => "3:30 pm"}}
+                
+                @ridesController = RidesController.new
+                @ridesController.instance_variable_set(:@name, 'slee264@binghamton.edu')
+                
+                post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '1:00 pm'}}
                 assert_template 'rides/create'
                 assert_select "h2", "Your ride has been posted."
             end
             
             it 'fails to post a ride if user does not select anything' do
-                post :create, {:ride => {"departure_location" => "Bronx County", "destination_location" => "Broome County", "ride_timepicker" => "3:30 pm"}}
+                post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => ''}}
                 assert_template 'rides/create'
-                assert_select "h1", "You need to select all the fields."
+                assert_select 'h1', 'You need to select all the fields.'
             end
     end
     
     describe 'search for rides' do
         it 'searches for a ride' do
-
-            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date_and_time(1i)" => 2017, "date_and_time(2i)" => 10, "date_and_time(3i)" => 29, "date_and_time(4i)" => 5, "date_and_time(5i)" => 40}}
-            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date_and_time(1i)" => 2017, "date_and_time(2i)" => 10, "date_and_time(3i)" => 29, "date_and_time(4i)" => 12, "date_and_time(5i)" => 37}}
             
-            get :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
+            @ridesController = RidesController.new
+            @ridesController.instance_variable_set(:@name, 'slee264@binghamton.edu')
+            
+            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '1:00 pm'}}
+            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '2:00 pm'}}
+            
+            get :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date" => '1/1/2017'}}
             
             assert_select 'tr' do |elements|
                 assert_select 'td', 'From'
