@@ -8,7 +8,7 @@
     %br
     = "Destination Location: " + @destination
     %br
-    = "Date & Time: #{@date_and_time}"
+    = "Date & Time: #{@date_and_time.strftime('%A, %B %-d, %Y at %-I:%M %p')}"
     %br
     = "Posted by user: #{@name}   (user ##{@posterUserId})"
     %br
