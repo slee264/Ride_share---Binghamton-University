@@ -1,11 +1,19 @@
-== README
+=begin rodc
+==About
+Sharing a ride is a great way for people to get where they're going while reducing costs and shrinking their carbon footprint. Organizing people into car pools, especially for a large organization/community such as a University, can be challenge. Not everyone knows everyone else, and with everyone going to and from different places, coordination can be difficult. That's where the RideShare application comes in.
 
-How to set up this application. 
+RideShare is an open source web-based application originally written for Binghamton University that allows any large organization or community to maintain it's own private carpooling system.
 
-    First clone the project from Github and install it on c9.
-    Github link: https://github.com/slee264/RideShare
-    Then do "bundle install --without production"
-            "rake db:migrate"
-    After that you can run "rails s -p $PORT -b $IP" to see the actual website. 
-    
-    Heroku link is here: https://salty-bastion-71342.herokuapp.com/
+==Run on Cloud9
+To try the application on Cloud9[http://c9.io/], just follow these steps:
+    1. Download the source code into your Cloud9 instance.
+    2. Run <tt>bundle install --without production</tt> to download and install the necessary gems.
+    3. Run <tt>rake db:migrate</tt> to setup the database.
+    4. Start the application with <tt>rails s -p $PORT -b $IP</tt>
+
+==Try on Heroku
+To try the application on our Heroku instance, see: https://salty-bastion-71342.herokuapp.com/
+
+==Learn More
+To learn more about RideShare, checkout our {Agile Ventures page}[http://www.agileventures.org/projects/burideshare]. Also be sure to read the application's FAQ section.
+=end
