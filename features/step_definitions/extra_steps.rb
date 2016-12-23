@@ -9,7 +9,13 @@ Given /^I am logged in/ do
 	#expect(page).to have_text("Welcome mprice3!")
 end
 
+Then(/^I should see the following \(\#ride_search_results\)$/) do |table|
+  table_results = page.find('#ride_search_results')
+end
 
+Then /^I should see the following$/ do |text|
+	expect(page).to have_css('ride_search_results', text: 'Albany County')
+end
 
 Given /the following locations exist/ do |rides_table|
 	

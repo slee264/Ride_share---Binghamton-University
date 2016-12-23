@@ -7,7 +7,7 @@
             %table#ride_search_results
                 %thead
                     %tr
-                        %td Poster's E-Mail
+                        %td Poster ID
                         %td From
                         %td To
                         %td Year
@@ -20,11 +20,13 @@
                     -if @rides
                         -@rides.each do |ride|
                             %tr
-                                %td= User.select(:email).find(ride[:poster_user_id])['email']
+                                -# %td= User.select(:email).find(ride[:poster_user_id])['email']
+                                -# %td= "mprice3@binghamton.edu"
+                                %td= ride[:poster_user_id]
                                 %td= ride[:departure_location]
                                 %td= ride[:destination_location]
                                 %td= ride[:date_and_time].strftime("%Y")
-                                %td= ride[:date_and_time].strftime("%m")
+                                %td= ride[:date_and_time].strftime("%B")
                                 %td= ride[:date_and_time].strftime("%d")
                                 %td= ride[:date_and_time].strftime("%I")
                                 %td= ride[:date_and_time].strftime("%M")

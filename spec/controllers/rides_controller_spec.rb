@@ -8,9 +8,8 @@ RSpec.describe RidesController, type: :controller do
             it 'posts a ride' do
                 
                 @ridesController = RidesController.new
-                @ridesController.instance_variable_set(:@name, 'slee264@binghamton.edu')
-                
-                post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '1:00 pm'}}
+                #@ridesController.instance_variable_set(:@name, 'slee264@binghamton.edu')
+                test = post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '1:00 pm'}}
                 assert_template 'rides/create'
                 assert_select "h2", "Your ride has been posted."
             end
@@ -23,31 +22,47 @@ RSpec.describe RidesController, type: :controller do
     end
     
     describe 'search for rides' do
-        it 'searches for a ride' do
+        it 'searches for a ride that exists' do
             
             @ridesController = RidesController.new
-            @ridesController.instance_variable_set(:@name, 'slee264@binghamton.edu')
-            
-            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '1:00 pm'}}
-            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '1/1/2017', "time" => '2:00 pm'}}
-            
-            get :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date" => '1/1/2017'}}
-            
+            #@ridesController.instance_variable_set(:@name, 'mprice3@binghamton.edu')
+            @test = post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '12/22/2016', "time" => '1:00 pm', "poster_user_id" => 11}}
+            post :create, {:ride => {"departure_location" => "Allegany County", "destination_location" => "Columbia County", "date" => '12/22/2016', "time" => '2:00 pm', "poster_user_id" => 13}}
+            get :search, {:search => {"departure" => "Allegany County", "destination" => "Columbia County", "date" => '12/22/2016'}}
+            assert_select 'h1', 'Search Results'
             assert_select 'tr' do |elements|
-                assert_select 'td', 'From'
-                assert_select 'td', 'To'
-                assert_select 'td', 'Year'
-                assert_select 'td', 'Month'
-                assert_select 'td', 'Day'
-                assert_select 'td', 'Hour'
-                assert_select 'td', 'Minute'
-                assert_select 'td', 'Time'
+                #"td".should be_an_instance_of(Integer)
+                #assert_select ride[:poster_user_id], 11
+                assert_select 'td', 'Allegany County'
+                assert_select 'td', 'Columbia County'
+                assert_select 'td', '2016'
+                assert_select 'td', 'December'
+                assert_select 'td', '22'
+                assert_select 'td', '01'
+                assert_select 'td', '00'
+                assert_select 'td', 'PM'
+            end
+            assert_select 'tr' do |elements|
+                #"td".should be_an_instance_of(Integer)
+                #assert_select ride[:poster_user_id], 13
+                assert_select 'td', 'Allegany County'
+                assert_select 'td', 'Columbia County'
+                assert_select 'td', '2016'
+                assert_select 'td', 'December'
+                assert_select 'td', '22'
+                assert_select 'td', '02'
+                assert_select 'td', '00'
+                assert_select 'td', 'PM'
             end
         end
         
         it 'searches for a ride with at least one empty field' do
             get :search, {:search => {"departure" => "", "destination" => "Columbia County", "date(1i)" => 2017, "date(2i)" => 10, "date(3i)" => 29}}
             assert_select "h1", "You need to select all the fields!"
+        end
+        
+        it 'searches for a ride that does not exist in the db' do
+           
         end
     end
 end

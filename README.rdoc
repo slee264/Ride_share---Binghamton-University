@@ -1,28 +1,11 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+How to set up this application. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    First clone the project from Github and install it on c9.
+    Github link: https://github.com/slee264/RideShare
+    Then do "bundle install --without production"
+            "rake db:migrate"
+    After that you can run "rails s -p $PORT -b $IP" to see the actual website. 
+    
+    Heroku link is here: https://salty-bastion-71342.herokuapp.com/

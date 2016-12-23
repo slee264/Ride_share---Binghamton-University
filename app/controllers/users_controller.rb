@@ -24,7 +24,7 @@ class UsersController < ApplicationController
    end
    
    def create
-
+      
       @allValuesPresent = true
       @success = true
       @notExist = true   

@@ -73,6 +73,7 @@ class RidesController < ApplicationController
   
   def search
     @valid = true
+    @newSearch = params[:search]
     params[:search].each do |key, value|
       if value == ""
         @valid = false

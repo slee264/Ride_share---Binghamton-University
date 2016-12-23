@@ -18,8 +18,9 @@ RSpec.describe SessionsController, type: :controller do
             @controller = UsersController.new
             post :create, {:user => {:first_name => 'Matt', :last_name => 'Price', :email => 'mprice3@binghamton.edu', :password => 'goodmusic'}, :post => {:password_confirmation => 'goodmusic'}}
             @controller = SessionsController.new
-            post :create, {:session => {:email => 'mprice3@binghamton.edu', :password => 'goodmusic'}}
+            @test = post :create, {:session => {:email => 'mprice3@binghamton.edu', :password => 'goodmusic'}}
             response.should redirect_to(user_path(1))
+            #debugger
         end
         
          it 'fails to login a user with an invalid email/password combo' do
