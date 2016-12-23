@@ -5,10 +5,10 @@ RideShare is an open source web-based application originally written for Bingham
 
 ==Run on Cloud9
 To try the application on Cloud9[http://c9.io/], just follow these steps:
-    1. Download the source code into your Cloud9 instance.
-    2. Run <tt>bundle install --without production</tt> to download and install the necessary gems.
-    3. Run <tt>rake db:migrate</tt> to setup the database.
-    4. Start the application with <tt>rails s -p $PORT -b $IP</tt>
+1. Download the source code into your Cloud9 instance.
+2. Run <tt>bundle install --without production</tt> to download and install the necessary gems.
+3. Run <tt>rake db:migrate</tt> to setup the database.
+4. Start the application with <tt>rails s -p $PORT -b $IP</tt>
 
 ==Try on Heroku
 To try the application on our Heroku instance, see: https://salty-bastion-71342.herokuapp.com
