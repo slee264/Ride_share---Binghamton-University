@@ -1,33 +1,58 @@
 -#  This file is app/views/rides/index.html.haml
-:javascript
-    $( function() {
-        $( "#search_datepicker" ).datepicker({
-            minDate: 0, maxDate: "+3M",
-            showOn: "button",
-            buttonImage: "assets/calendar.png",
-            buttonImageOnly: true,
-            buttonText: "Select date"
+
+%head
+    // %link{:rel => "stylesheet", :href => Rails.root.join('app', 'assets', 'stylesheets').to_s + "/index.css"}
+    :javascript
+        $( function() {
+            $( "#search_datepicker" ).datepicker({
+                minDate: 0, maxDate: "+3M",
+                showOn: "button",
+                buttonImage: "assets/calendar.png",
+                buttonImageOnly: true,
+                buttonText: "Select date"
+            } );
         } );
-    } );
-    
-
-.center.jumbotron
-    %h1 Search
-    %br
-    = form_tag search_rides_path, :method => :GET do
-        = label :search, :departure, 'Departure Location'
-        = select :search, :departure, @all_NY_counties, {:prompt => 'Departure'}
-    
-        = label :search, :destination, 'Destination Location'
-        = select :search, :destination, @all_NY_counties, {:prompt => 'Destination'}
-        %br
-        = label :search, :date, 'On'
-        %input#search_datepicker{:type => "text", :name => 'search[date]', :value => "#{Date.today().strftime('%m/%d/%Y')}"}/
         
+        $(document).ready(function (){
+            
+        })
+    
+%body
+    .center.jumbotron
+        .title-container
+            %h1 RIDESHARE
         %br
-        = submit_tag 'Search'
-    %br
-    = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
-    -if logged_in?
-        = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"
-
+        .form-container
+        = form_tag search_rides_path, :method => :GET do
+            = label :search, :departure, 'Departure Location'
+            = select :search, :departure, @all_NY_counties, {:prompt => 'Departure'}
+            %br
+            = label :search, :destination, 'Destination Location'
+            = select :search, :destination, @all_NY_counties, {:prompt => 'Destination'}
+            %br
+            = label :search, :date, 'On'
+            %input#search_datepicker{:type => "text", :name => 'search[date]', :value => "#{Date.today().strftime('%m/%d/%Y')}"}/
+            
+            %br
+            %button{:class => "btn btn-primary btn-lg", :'data-toggle' => "modal", 'data-target' => '#myModal'} Search!
+        
+            .modal.fade#myModal{:tabindex => "-1", :role => "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true"}
+                .modal_dialog
+                    .modal_content
+                        .modal_header
+                            %button.close{:type => "button", 'data-dismiss' => "modal", 'aria-hidden' => "true"} 
+                                &times;
+                                %h4.modal_title#myModalLabel 
+                                    Warning!
+                        .modal_body 
+                            You need to select all the fields!
+                        .modal_footer
+                            %button.btn.btn-default{:type => "button", 'data-dismiss' => "modal"}
+                                Close
+                            %button.btn.btn-primary{:type => "button"}
+                                Submit Changes
+        %br
+        = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
+        
+        -if logged_in?
+            = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"

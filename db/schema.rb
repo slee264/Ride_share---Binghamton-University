@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214032639) do
+ActiveRecord::Schema.define(version: 20161223044012) do
 
   create_table "rides", force: :cascade do |t|
     t.string   "departure_location"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20161214032639) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_token"
   end
 
 end

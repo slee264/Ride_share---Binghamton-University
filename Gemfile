@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'email_format'
 
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass'
 
 gem 'rdiscount', '~> 2.2.0'   #required for use of markdown in Haml files
 

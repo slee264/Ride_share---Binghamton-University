@@ -33,6 +33,6 @@ module RideShare
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local
-    
+    config.action_mailer.default_url_options = { host: 'mprice3@binghamton.edu' }
   end
 end

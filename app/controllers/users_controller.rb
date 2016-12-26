@@ -35,13 +35,14 @@ class UsersController < ApplicationController
             return
          end
       end
-      
+   
+=begin
       if not params[:user][:email].end_with? '@binghamton.edu'
            @success = false
            @message = "Must use Binghamton e-mail address."
            return
       end
-      
+=end      
       if (params[:user][:password] != params[:post][:password_confirmation])
          @message = "The password fields don't match."
          @success = false
@@ -73,11 +74,24 @@ class UsersController < ApplicationController
          @notExist = false
          return
       end
-
-      User.create!(user_params) if @success == true && @notExist == true
+      @user = User.create!(user_params) if @success == true && @notExist == true
+      UserMailer.registration_confirmation(@user).deliver_now
+      #flash[:success] = "Please confirm your email address to continue."
+      #redirect_to root_path
       # flash[:success] = "Welcome to Bu RideShare!!!"
       # redirect_to root_path
    end
+   
+   def confirm_email
+      user = User.find_by_confirm_token(params[:id])
+      if user
+         user.email_activate
+         flash[:success] = "Welcome to BU RideShare! Your email has been verified!
+         Please sign in to continue."
+         redirect_to user_path
+      end
+   end
+   
    def destroy
       # #destroy one user
       User.destroy
@@ -95,7 +109,8 @@ class UsersController < ApplicationController
       username.slice!('@binghamton.edu')
       @message = 'Welcome ' + username + '!'
    end
-   
+
+
    def login
       
    end

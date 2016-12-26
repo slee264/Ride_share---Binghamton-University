@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   
   resources :users do
    # get 'users/' => 'users#create'
+    member do
+      get :confirm_email
+    end
   end
   
   root 'rides#index'
@@ -25,7 +28,7 @@ Rails.application.routes.draw do
   match 'login', :to => 'sessions#new', :via => :get
   match 'login', :to => 'sessions#create', :via => :post
   match 'logout', :to => 'sessions#destroy', :via => :get
-
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
