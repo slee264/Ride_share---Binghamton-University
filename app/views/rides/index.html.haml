@@ -10,20 +10,29 @@
                 buttonImage: "assets/calendar.png",
                 buttonImageOnly: true,
                 buttonText: "Select date"
-            } );
-        } );
-        
-        $(document).ready(function (){
+            });
             
-        })
-    
+            $('#search_form_submit').click(function(event){
+                $('.search_form').children('select').each(function(){
+                    if($(this).val() == ""){
+                        $('#search_form_submit').attr('data-target', "#myModal");
+                        event.preventDefault();
+                    }else{
+                        $('#search_form_submit').attr('data-target', "");
+                        return;
+                    }
+                });
+            });
+        });
+        
+
 %body
     .center.jumbotron
         .title-container
             %h1 RIDESHARE
         %br
         .form-container
-        = form_tag search_rides_path, :method => :GET do
+        = form_tag search_rides_path, :method => :GET, :class => "search_form" do
             = label :search, :departure, 'Departure Location'
             = select :search, :departure, @all_NY_counties, {:prompt => 'Departure'}
             %br
@@ -34,25 +43,24 @@
             %input#search_datepicker{:type => "text", :name => 'search[date]', :value => "#{Date.today().strftime('%m/%d/%Y')}"}/
             
             %br
-            %button{:class => "btn btn-primary btn-lg", :'data-toggle' => "modal", 'data-target' => '#myModal'} Search!
-        
-            .modal.fade#myModal{:tabindex => "-1", :role => "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true"}
-                .modal_dialog
-                    .modal_content
-                        .modal_header
-                            %button.close{:type => "button", 'data-dismiss' => "modal", 'aria-hidden' => "true"} 
-                                &times;
-                                %h4.modal_title#myModalLabel 
-                                    Warning!
-                        .modal_body 
-                            You need to select all the fields!
-                        .modal_footer
-                            %button.btn.btn-default{:type => "button", 'data-dismiss' => "modal"}
-                                Close
-                            %button.btn.btn-primary{:type => "button"}
-                                Submit Changes
+            .buttons-container
+                %button{:id => 'search_form_submit', :class => "btn btn-primary btn-lg", 'data-toggle' => "modal", 'data-target' => ""} Search!
+                = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
         %br
-        = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
+        // = link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary"
         
         -if logged_in?
             = link_to 'Post a Ride', new_ride_path, class: "btn-lg btn-primary"
+        
+    .modal.fade#myModal{:tabindex => "-1", :role => "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true"}
+        .modal_dialog.col-md-6.col-md-offset-3
+            .modal_content
+                .modal_header
+                    %button.close{:type => "button", 'data-dismiss' => "modal", 'aria-hidden' => "true"} 
+                        &times;
+                        %h4.modal_title#myModalLabel 
+                    %h1 Oops!
+                .modal_body 
+                    %h3 You need to select all the fields!
+                .modal_footer
+                    %button.btn.btn-default{:type => "button", 'data-dismiss' => "modal"}Close

@@ -75,7 +75,9 @@ class UsersController < ApplicationController
          return
       end
       @user = User.create!(user_params) if @success == true && @notExist == true
+      @port = request.port
       UserMailer.registration_confirmation(@user).deliver_now
+      debugger
       #flash[:success] = "Please confirm your email address to continue."
       #redirect_to root_path
       # flash[:success] = "Welcome to Bu RideShare!!!"

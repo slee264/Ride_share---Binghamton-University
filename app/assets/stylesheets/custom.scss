@@ -130,6 +130,40 @@ footer ul li {
   margin-left: 15px;
 }
 
-.modal{
-    position: absolute;
+.modal_dialog{
+    top: 30%;
+    position: relative;
+    text-align: center;
+}
+
+.modal_header{
+    color: #fff;
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #5cb85c;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    // -webkit-border-top-left-radius: 5px;
+    // -webkit-border-top-right-radius: 5px;
+    // -moz-border-radius-topleft: 5px;
+    // -moz-border-radius-topright: 5px;
+    // border-top-left-radius: 5px;
+    // border-top-right-radius: 5px;
+}
+
+.modal_body{
+    border-radius: 0px;
+    padding: 20px;
+    background-color: #eee;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.modal_footer{
+    // border-radius: 0px;
+    padding-top: 20px;
+}
+
+.buttons-container{
+    padding: 20px;
 }
