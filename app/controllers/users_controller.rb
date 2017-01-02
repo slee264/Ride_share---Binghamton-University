@@ -74,26 +74,9 @@ class UsersController < ApplicationController
          @notExist = false
          return
       end
-      @user = User.create!(user_params) if @success == true && @notExist == true
-      @port = request.port
-      UserMailer.registration_confirmation(@user).deliver_now
-      debugger
-      #flash[:success] = "Please confirm your email address to continue."
-      #redirect_to root_path
-      # flash[:success] = "Welcome to Bu RideShare!!!"
-      # redirect_to root_path
+
    end
-   
-   def confirm_email
-      user = User.find_by_confirm_token(params[:id])
-      if user
-         user.email_activate
-         flash[:success] = "Welcome to BU RideShare! Your email has been verified!
-         Please sign in to continue."
-         redirect_to user_path
-      end
-   end
-   
+
    def destroy
       # #destroy one user
       User.destroy

@@ -1,30 +1,28 @@
 -#  This file is app/views/rides/index.html.haml
 
 %head
-    // %link{:rel => "stylesheet", :href => Rails.root.join('app', 'assets', 'stylesheets').to_s + "/index.css"}
-    :javascript
-        $( function() {
-            $( "#search_datepicker" ).datepicker({
-                minDate: 0, maxDate: "+3M",
-                showOn: "button",
-                buttonImage: "assets/calendar.png",
-                buttonImageOnly: true,
-                buttonText: "Select date"
-            });
+
+    // :javascript
+    //     $( function() {
+    //         $( "#search_datepicker" ).datepicker({
+    //             minDate: 0, maxDate: "+3M",
+    //             showOn: "button",
+    //             buttonImage: "assets/calendar.png",
+    //             buttonImageOnly: true,
+    //             buttonText: "Select date"
+    //         });
             
-            $('#search_form_submit').click(function(event){
-                $('.search_form').children('select').each(function(){
-                    if($(this).val() == ""){
-                        $('#search_form_submit').attr('data-target', "#myModal");
-                        event.preventDefault();
-                    }else{
-                        $('#search_form_submit').attr('data-target', "");
-                        return;
-                    }
-                });
-            });
-        });
-        
+    //         $('#search_form_submit').click(function(event){
+    //             if($('#search_departure').val() == "" || $('#search_destination').val() == ""){
+    //                 $('#search_form_submit').attr('data-target', "#myModal");
+    //                 event.preventDefault();
+    //                 return;
+    //             }else{
+    //                 $('#search_form_submit').attr('data-target', "");
+    //                 return;
+    //             }
+    //         });
+    //     });
 
 %body
     .center.jumbotron

@@ -30,7 +30,7 @@ describe UsersController do
             post :create, {:user => {:first_name => 'Matt', :last_name => 'Price', :email => 'mprice3@gmail.com', :password => '1234'}, :post => {:password_confirmation => '1234'}}
             assert_template 'users/create'
             expect(assigns(:success)).to be_falsey
-            assert_select "h2", "Must use Binghamton e-mail address."
+            assert_select "h2", "There was an error in your registration."
         end
         
         it 'registers a user successfully' do
@@ -41,9 +41,7 @@ describe UsersController do
             expect(assigns(:success)).to be_truthy
             expect(assigns(:notExist)).to be_truthy
             expect(assigns(:message)).to be_nil
-            expect(User.count).to_not eq(@before_count)
-            @count = User.count
-            assert_select 'h2', 'You have registered successfully!'
+            assert_select 'h2', 'Thanks for registering! To confirm your registration, click the activation link in your email.'
         end
 
         # it 'fails to register a user if they already exist in db' do

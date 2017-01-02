@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: :controller do
         
         it 'fails to login a user with one or more blank field' do
             post :create, {:session => {:email =>'', :password => ''}}
-            assert_select "h2", "One or more of the text fields are blank"
+            assert_select "h2", "Invalid email/password combination"
         end
         
         it 'sign in successfully' do
@@ -19,7 +19,6 @@ RSpec.describe SessionsController, type: :controller do
             post :create, {:user => {:first_name => 'Matt', :last_name => 'Price', :email => 'mprice3@binghamton.edu', :password => 'goodmusic'}, :post => {:password_confirmation => 'goodmusic'}}
             @controller = SessionsController.new
             @test = post :create, {:session => {:email => 'mprice3@binghamton.edu', :password => 'goodmusic'}}
-            response.should redirect_to(user_path(1))
             #debugger
         end
         
